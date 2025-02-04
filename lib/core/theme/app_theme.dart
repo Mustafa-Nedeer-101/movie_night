@@ -17,7 +17,7 @@ class CustomAppTheme {
     useMaterial3: true,
     fontFamily: "Anta",
     brightness: Brightness.light,
-    primaryColor: CColors.primaryBackground,
+    primaryColor: CColors.primaryColor,
     scaffoldBackgroundColor: CColors.light,
 
     // Custom Themes

@@ -4,33 +4,27 @@ class CColors {
   CColors._();
 
   // App Colors
-  static const Color primary = Color.fromARGB(255, 14, 1, 36);
-  static const Color secondary = Color.fromARGB(255, 159, 3, 0);
-  static const Color accent = Color.fromARGB(211, 45, 28, 92);
+  static const Color primaryColor = Color(0xFFe00f33);
+  static const Color secondaryColor = Color(0xFFF5C518);
+  static const Color backgroundColor = Color(0xFF070420);
+  static const Color surfaceColor = Color(0xFF1F1F1F);
 
-  // Gradient Colors
-  static const Gradient linearGradient = LinearGradient(
-      begin: Alignment(0, 0),
-      end: Alignment(0.707, -0.707),
-      colors: [Color(0xffff9a9e), Color(0xfffad0c4), Color(0xfffad0c0)]);
+  static const Color accentColor = Color(0xFF007BFF);
+  static const Color errorColor = Color(0xFFFF0000);
 
   // Text Colors
-  static const Color textPrimary = Colors.white;
-  static const Color textGrey = Color(0xFF272727);
-  static const Color textLightGrey = Color(0xFF656565);
+  static const Color textColor = Color(0xFFFFFFFF);
+  static const Color secondaryTextColor = Color(0xFFB3B3B3);
 
   // Background Colors
   static const Color light = Color(0xFFF6F6F6);
-  static const Color dark = Color(0xFF272727);
-  static const Color primaryBackground = Color.fromARGB(255, 60, 52, 78);
+  static const Color dark = Color(0xFF25233d);
 
   // Background Container Colors
   static const Color ligntContainer = Color(0xFFF6F6F6);
-  static Color darkContainer =
-      CColors.textLightGrey.withAlpha((0.1 * 255).toInt());
 
   // Button Colors
-  static const Color buttonPrimary = Color.fromARGB(255, 159, 3, 0);
+  static const Color buttonPrimary = Color.fromARGB(234, 255, 1, 98);
   static const Color buttonSecondary = Color(0xFF6C757D);
   static const Color buttonDisabled = Color(0xFFC4C4C4);
 
