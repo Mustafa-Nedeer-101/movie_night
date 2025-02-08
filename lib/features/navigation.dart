@@ -32,18 +32,20 @@ class _BottomNavigationState extends State<BottomNavigation> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home_filled),
             label: 'Home',
           ),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-          BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Saved'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark_border), label: 'Saved'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_outlined), label: 'Profile'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: CColors.backgroundColor,
+        backgroundColor: CColors.surfaceColor,
       ),
     );
   }

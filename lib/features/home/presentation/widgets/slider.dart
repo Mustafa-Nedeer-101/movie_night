@@ -49,6 +49,24 @@ class _HomeSliderState extends State<HomeSlider> {
           ),
         ),
 
+        // Shadow
+        Container(
+          height: height * 0.42,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.white.withAlpha(0),
+                Colors.black.withAlpha(50),
+                Colors.black.withAlpha(100),
+                Colors.black.withAlpha(200),
+              ],
+            ),
+          ),
+        ),
+
+        // Dots
         Positioned(
           bottom: CSizes.md,
           child: Row(

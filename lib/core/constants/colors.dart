@@ -6,14 +6,14 @@ class CColors {
   // App Colors
   static const Color primaryColor = Color(0xFFe00f33);
   static const Color secondaryColor = Color(0xFFF5C518);
-  static const Color backgroundColor = Color(0xFF070420);
-  static const Color surfaceColor = Color(0xFF1F1F1F);
+  static const Color backgroundColor = Color(0xFF07041f);
+  static const Color surfaceColor = Color(0xFF1f1c37);
 
   static const Color accentColor = Color(0xFF007BFF);
   static const Color errorColor = Color(0xFFFF0000);
 
   // Text Colors
-  static const Color textColor = Color(0xFFFFFFFF);
+  static const Color textColor = Color(0xFFf5f5ff);
   static const Color secondaryTextColor = Color(0xFFB3B3B3);
 
   // Background Colors
