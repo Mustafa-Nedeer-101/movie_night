@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/core/constants/colors.dart';
-import 'package:movie_night/core/utils/helpers/helper_functions.dart';
+import 'package:movie_night/utils/constants/colors.dart';
+import 'package:movie_night/utils/helpers/helper_functions.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomShimmerEffect extends StatelessWidget {

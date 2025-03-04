@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/core/common/widgets/headers/section_header.dart';
-import 'package:movie_night/core/constants/colors.dart';
-import 'package:movie_night/core/constants/sized.dart';
+import 'package:movie_night/presentaion/core/common/widgets/headers/section_header.dart';
+import 'package:movie_night/utils/constants/colors.dart';
+import 'package:movie_night/utils/constants/sized.dart';
 
 class CatagoriesList extends StatefulWidget {
   const CatagoriesList({super.key});

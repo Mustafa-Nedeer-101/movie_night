@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/core/common/widgets/cards/rounded_image.dart';
-import 'package:movie_night/core/common/widgets/headers/section_header.dart';
-import 'package:movie_night/core/constants/enums.dart';
-import 'package:movie_night/core/constants/sized.dart';
+import 'package:movie_night/presentaion/core/common/widgets/cards/rounded_image.dart';
+import 'package:movie_night/presentaion/core/common/widgets/headers/section_header.dart';
+import 'package:movie_night/utils/constants/enums.dart';
+import 'package:movie_night/utils/constants/sized.dart';
 
 class MostPopularMovies extends StatelessWidget {
   const MostPopularMovies({super.key});

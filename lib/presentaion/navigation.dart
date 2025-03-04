@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/core/constants/colors.dart';
-import 'package:movie_night/features/home/presentation/home_screen.dart';
+import 'package:movie_night/utils/constants/colors.dart';
+import 'package:movie_night/presentaion/home/presentation/home_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});

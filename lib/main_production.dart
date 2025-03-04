@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/core/theme/app_theme.dart';
-import 'package:movie_night/features/navigation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:movie_night/presentaion/core/theme/app_theme.dart';
+import 'package:movie_night/presentaion/navigation.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 

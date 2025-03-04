@@ -2,9 +2,9 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_night/core/common/shimmers/shimmer_effect.dart';
-import 'package:movie_night/core/constants/enums.dart';
-import 'package:movie_night/core/constants/sized.dart';
+import 'package:movie_night/presentaion/core/common/shimmers/shimmer_effect.dart';
+import 'package:movie_night/utils/constants/enums.dart';
+import 'package:movie_night/utils/constants/sized.dart';
 
 class CustomRoundedImage extends StatelessWidget {
   const CustomRoundedImage({

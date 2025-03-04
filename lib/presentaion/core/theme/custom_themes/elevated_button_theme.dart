@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/core/constants/colors.dart';
+import 'package:movie_night/utils/constants/colors.dart';
 
 class TElevatedButtonTheme {
   TElevatedButtonTheme._();

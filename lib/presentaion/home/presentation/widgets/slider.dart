@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_night/core/constants/sized.dart';
+import 'package:movie_night/utils/constants/sized.dart';
 
 class HomeSlider extends StatefulWidget {
   const HomeSlider({super.key});

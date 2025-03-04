@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/core/common/widgets/cards/rounded_image.dart';
-import 'package:movie_night/core/common/widgets/headers/section_header.dart';
-import 'package:movie_night/core/constants/enums.dart';
-import 'package:movie_night/core/constants/sized.dart';
+import 'package:movie_night/presentaion/core/common/widgets/cards/rounded_image.dart';
+import 'package:movie_night/presentaion/core/common/widgets/headers/section_header.dart';
+import 'package:movie_night/utils/constants/enums.dart';
+import 'package:movie_night/utils/constants/sized.dart';
 
-class TopRatings extends StatelessWidget {
-  const TopRatings({super.key});
+class LatestMovies extends StatelessWidget {
+  const LatestMovies({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class TopRatings extends StatelessWidget {
     return Column(
       children: [
         SectionHeader(
-          title: 'Top Ratings',
+          title: 'Latest Movies',
           tailWidget: TextButton(onPressed: () {}, child: Text('See all')),
         ),
         SizedBox(
@@ -30,7 +30,7 @@ class TopRatings extends StatelessWidget {
             itemBuilder: (context, index) {
               return CustomRoundedImage(
                 width: 100,
-                image: movieImages[index],
+                image: movieImages[2 - index],
                 imageType: ImageType.asset,
               );
             },
