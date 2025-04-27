@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movie_night/presentaion/screeens/profile/profile_screen.dart';
 import 'package:movie_night/utils/constants/colors.dart';
-import 'package:movie_night/presentaion/home/presentation/home_screen.dart';
+import 'package:movie_night/presentaion/features/home/view/home_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -17,6 +18,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     HomeScreen(),
     DecoratedBox(decoration: BoxDecoration(color: Colors.orange)),
     DecoratedBox(decoration: BoxDecoration(color: Colors.yellow)),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

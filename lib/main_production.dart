@@ -4,7 +4,7 @@ import 'package:movie_night/presentaion/core/theme/app_theme.dart';
 import 'package:movie_night/presentaion/navigation.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "assets/.env");
   runApp(const MyApp());
 }
 
