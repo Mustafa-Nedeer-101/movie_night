@@ -25,7 +25,7 @@ class CustomShimmerEffect extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: color ?? (dark ? CColors.darkerGrey : CColors.white),
+          color: color ?? (dark ? Palette.darkerGrey : Palette.white),
           borderRadius: BorderRadius.circular(radius),
         ),
       ),

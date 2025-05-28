@@ -1,31 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/presentaion/features/theme_switch/view_model/theme_switch_view_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_night/presentaion/features/theme_switch/cubit/theme_cubit.dart';
 
 class ThemeSwitch extends StatelessWidget {
-  const ThemeSwitch({super.key, required this.viewmodel});
-
-  final ThemeSwitchViewModel viewmodel;
+  const ThemeSwitch({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Row(
-        children: [
-          const Text('Dark Mode'),
-          ListenableBuilder(
-            listenable: viewmodel,
-            builder: (context, _) {
-              return Switch(
-                value: viewmodel.isDarkMode,
-                onChanged: (_) {
-                  viewmodel.toggle.execute();
-                },
-              );
-            },
-          ),
-        ],
-      ),
+    return BlocBuilder<ThemeCubit, ThemeState>(
+      builder: (context, state) {
+        switch (state) {
+          case ThemeSuccess():
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  const Text('Dark Mode'),
+                  Switch(
+                    value: state.isDarkMode,
+                    onChanged: (_) {
+                      context.read<ThemeCubit>().toggle();
+                    },
+                  ),
+                ],
+              ),
+            );
+
+          case ThemeFailure():
+            return Icon(
+              Icons.error,
+              color: Colors.red,
+            );
+        }
+      },
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:movie_night/data/repositories/theme/theme_repo.dart';
+import 'package:movie_night/data/repositories/theme_repo.dart';
 import 'package:movie_night/utils/arch/result.dart';
 
 class MainAppViewModel extends ChangeNotifier {

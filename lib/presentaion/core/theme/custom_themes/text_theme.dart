@@ -43,80 +43,80 @@ class TTextTheme {
     displayLarge: TextStyle(
       fontSize: 32,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
     displayMedium: TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
     displaySmall: TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
 
     // Headline styles
     headlineLarge: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
     headlineMedium: TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
     headlineSmall: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
 
     // Title styles
     titleLarge: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
     titleMedium: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
     titleSmall: TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
 
     // Body styles
     bodyLarge: TextStyle(
       fontSize: 16,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
     bodyMedium: TextStyle(
       fontSize: 14,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
     bodySmall: TextStyle(
       fontSize: 12,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
 
     // Label styles (used for buttons and captions)
     labelLarge: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.bold,
-      color: CColors.textColor,
+      color: Palette.textColor,
     ),
     labelMedium: TextStyle(
       fontSize: 12,
-      color: CColors.secondaryTextColor,
+      color: Palette.secondaryTextColor,
     ),
     labelSmall: TextStyle(
       fontSize: 10,
-      color: CColors.secondaryTextColor,
+      color: Palette.secondaryTextColor,
     ),
   );
 }

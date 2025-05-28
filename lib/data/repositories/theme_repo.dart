@@ -22,13 +22,9 @@ class ThemeRepository {
 
   /// Set dark mode
   Future<Result<void>> setDarkMode(bool value) async {
-    try {
-      await _service.setDarkMode(value);
-      _darkModeController.add(value);
-      return Result.ok(null);
-    } on Exception catch (e) {
-      return Result.error(e);
-    }
+    await _service.setDarkMode(value);
+    _darkModeController.add(value);
+    return Result.ok(null);
   }
 
   /// Stream that emits theme config changes.

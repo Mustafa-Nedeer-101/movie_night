@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CColors {
-  CColors._();
+class Palette {
+  Palette._();
 
   // App Colors
   static const Color primaryColor = Color(0xFFe00f33);
@@ -37,6 +37,14 @@ class CColors {
   static const Color success = Color(0xFF388E3C);
   static const Color warning = Color(0xFFF57C00);
   static const Color info = Color(0xFF1976D2);
+
+  // Firebase Colors
+  static const Color firebaseNavy = Color(0xFF2C384A);
+  static const Color firebaseOrange = Color(0xFFF57C00);
+  static const Color firebaseAmber = Color(0xFFFFA000);
+  static const Color firebaseYellow = Color(0xFFFFCA28);
+  static const Color firebaseGrey = Color(0xFFECEFF1);
+  static const Color googleBackground = Color(0xFF4285F4);
 
   // Neutral Shades
   static const Color black = Color(0xFF232323);

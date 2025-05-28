@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "174126837732",
+    "project_id": "movie-night-f2377",
+    "storage_bucket": "movie-night-f2377.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174126837732:android:bfca378626ef81c68fa1f1",
+        "android_client_info": {
+          "package_name": "com.example.movie_night"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "174126837732-1v3vln7ibsh9lk521kv1mpoouamamrk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZfAArav_F2zfm7ZZMXTXR41neA8gYNCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "174126837732-1v3vln7ibsh9lk521kv1mpoouamamrk8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

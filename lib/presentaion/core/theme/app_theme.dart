@@ -17,8 +17,8 @@ class CustomAppTheme {
     useMaterial3: true,
     fontFamily: "Anta",
     brightness: Brightness.light,
-    primaryColor: CColors.primaryColor,
-    scaffoldBackgroundColor: CColors.light,
+    primaryColor: Palette.primaryColor,
+    scaffoldBackgroundColor: Palette.light,
 
     // Custom Themes
     appBarTheme: TAppBarTheme.lightAppBarTheme,
@@ -36,8 +36,8 @@ class CustomAppTheme {
     useMaterial3: true,
     fontFamily: "Anta",
     brightness: Brightness.dark,
-    primaryColor: CColors.primaryColor,
-    scaffoldBackgroundColor: CColors.backgroundColor,
+    primaryColor: Palette.primaryColor,
+    scaffoldBackgroundColor: Palette.backgroundColor,
 
     // Custom Themes
     appBarTheme: TAppBarTheme.darkAppBarTheme,

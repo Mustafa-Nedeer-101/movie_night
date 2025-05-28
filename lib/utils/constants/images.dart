@@ -1,5 +1,5 @@
-class CImages {
-  CImages._();
+class Images {
+  Images._();
 
   // user
   static const String user = "assets/images/content/user/user_avatar.png";
@@ -17,6 +17,7 @@ class CImages {
   // Password Configuration
 
   // Social Media Logos
-  static const String google = "assets/logos/google.JPG";
-  static const String facebook = "assets/logos/facebook.JPG";
+  static const String googleLogo = "assets/logos/google_logo.png";
+  static const String facebookLogo = "assets/logos/facebook_logo.png";
+  static const String firebaseLogo = "assets/logos/firebase_logo.png";
 }

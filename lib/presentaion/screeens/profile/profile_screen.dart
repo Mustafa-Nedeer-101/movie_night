@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/data/repositories/theme/theme_repo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_night/data/repositories/theme_repo.dart';
 import 'package:movie_night/presentaion/features/subscribe/sub.dart';
+import 'package:movie_night/presentaion/features/theme_switch/cubit/theme_cubit.dart';
 import 'package:movie_night/presentaion/features/theme_switch/view/theme_switch.dart';
-import 'package:movie_night/presentaion/features/theme_switch/view_model/theme_switch_view_model.dart';
 import 'package:movie_night/utils/service_locator/get_it.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -14,8 +15,9 @@ class ProfileScreen extends StatelessWidget {
       children: [
         // Theme switch
         Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-          ThemeSwitch(
-            viewmodel: ThemeSwitchViewModel(getIt<ThemeRepository>()),
+          BlocProvider(
+            create: (context) => ThemeCubit(getIt<ThemeRepository>()),
+            child: ThemeSwitch(),
           ),
         ]),
 

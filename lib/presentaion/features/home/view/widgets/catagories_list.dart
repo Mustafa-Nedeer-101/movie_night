@@ -42,8 +42,8 @@ class _CatagoriesListState extends State<CatagoriesList> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: _index == index
-                          ? CColors.primaryColor
-                          : CColors.surfaceColor,
+                          ? Palette.primaryColor
+                          : Palette.surfaceColor,
                       borderRadius: BorderRadius.all(
                         Radius.circular(CSizes.catagoryRadius),
                       )),

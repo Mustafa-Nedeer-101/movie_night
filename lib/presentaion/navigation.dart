@@ -47,7 +47,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         selectedItemColor: Colors.white,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: CColors.surfaceColor,
+        backgroundColor: Palette.surfaceColor,
       ),
     );
   }

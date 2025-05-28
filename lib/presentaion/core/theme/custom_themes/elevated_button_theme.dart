@@ -27,7 +27,7 @@ class TElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: CColors.buttonPrimary,
+      backgroundColor: Palette.buttonPrimary,
       disabledForegroundColor: Colors.grey,
       disabledBackgroundColor: Colors.grey,
       padding: const EdgeInsets.symmetric(vertical: 18),
