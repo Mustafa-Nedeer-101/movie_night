@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_night/presentaion/core/common/widgets/forms/custom_form_field.dart';
+import 'package:movie_night/presentaion/features/authentication/bloc/sign_in/sign_in_cubit.dart';
 import 'package:movie_night/presentaion/features/authentication/view/sign_up_screen.dart';
 import 'package:movie_night/presentaion/features/authentication/view/widgets/facebook_sign_in_button.dart';
 import 'package:movie_night/presentaion/features/authentication/view/widgets/google_sign_in_button.dart';
@@ -25,7 +27,12 @@ class SignInFormState extends State<SignInForm> {
 
   final _signInFormKey = GlobalKey<FormState>();
 
-  bool _isSigningIn = false;
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,62 +75,45 @@ class SignInFormState extends State<SignInForm> {
               ],
             ),
           ),
-          _isSigningIn
-              ? const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      Palette.firebaseOrange,
-                    ),
+          Padding(
+            padding: const EdgeInsets.only(left: 0.0, right: 0.0),
+            child: SizedBox(
+              width: double.maxFinite,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(
+                    Palette.firebaseOrange,
                   ),
-                )
-              : Padding(
-                  padding: const EdgeInsets.only(left: 0.0, right: 0.0),
-                  child: SizedBox(
-                    width: double.maxFinite,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all(
-                          Palette.firebaseOrange,
-                        ),
-                        shape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      onPressed: () async {
-                        widget.emailFocusNode.unfocus();
-                        widget.passwordFocusNode.unfocus();
-
-                        setState(() {
-                          _isSigningIn = true;
-                        });
-
-                        if (_signInFormKey.currentState!.validate()) {
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pop();
-                        }
-
-                        setState(() {
-                          _isSigningIn = false;
-                        });
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
-                        child: Text(
-                          'LOGIN',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Palette.firebaseGrey,
-                            letterSpacing: 2,
-                          ),
-                        ),
-                      ),
+                  shape: WidgetStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),
+                onPressed: () async {
+                  widget.emailFocusNode.unfocus();
+                  widget.passwordFocusNode.unfocus();
+
+                  if (_signInFormKey.currentState!.validate()) {
+                    context.read<SignInCubit>().signin(
+                        _emailController.text, _passwordController.text);
+                  }
+                },
+                child: const Padding(
+                  padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
+                  child: Text(
+                    'LOGIN',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Palette.firebaseGrey,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
           const SizedBox(height: 16.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -12,6 +12,12 @@ class Palette {
   static const Color accentColor = Color(0xFF007BFF);
   static const Color errorColor = Color(0xFFFF0000);
 
+  static const Color lightPrimary = Color(0xFFF4F8FF);
+  static const Color darkBlue = Color(0xFF242424);
+  static const Color lighterGrey = Color(0xFFEDEDED);
+  static const Color extraLightGrey = Color(0xFFFDFDFD);
+  static const Color lightestGrey = Color(0xFFF5F5F5);
+
   // Text Colors
   static const Color textColor = Color(0xFFf5f5ff);
   static const Color secondaryTextColor = Color(0xFFB3B3B3);

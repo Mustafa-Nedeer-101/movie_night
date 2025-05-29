@@ -17,7 +17,6 @@ class ThemeCubit extends Cubit<ThemeState> {
       if (result is Ok<bool>) {
         emit(ThemeSuccess(isDarkMode: result.value));
       }
-      return result;
     } on Exception catch (e) {
       emit(ThemeFailure(errorMessage: e.toString()));
     }

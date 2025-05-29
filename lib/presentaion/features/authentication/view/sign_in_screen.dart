@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_night/presentaion/features/authentication/bloc/sign_in/sign_in_cubit.dart';
 import 'package:movie_night/presentaion/features/authentication/view/widgets/sign_in_form.dart';
+import 'package:movie_night/presentaion/features/home/view/home_screen.dart';
 import 'package:movie_night/utils/constants/colors.dart';
 import 'package:movie_night/utils/constants/images.dart';
+import 'package:movie_night/utils/helpers/handlers.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -60,25 +64,35 @@ class SignInScreenState extends State<SignInScreen> {
                       ),
                     ],
                   ),
-                  FutureBuilder(
-                    future: Future.delayed(Duration(seconds: 4)),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasError) {
-                        return const Text('Error initializing Firebase');
-                      } else if (snapshot.connectionState ==
-                          ConnectionState.done) {
-                        return SignInForm(
-                          emailFocusNode: _emailFocusNode,
-                          passwordFocusNode: _passwordFocusNode,
-                        );
+
+                  // Form
+                  BlocListener<SignInCubit, SignInState>(
+                    listener: (context, state) {
+                      switch (state) {
+                        case SignInInitial():
+                          null;
+                        case SignInLoading():
+                          showDialog(
+                            context: context,
+                            builder: (context) => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        case SignInSuccess():
+                          Navigator.of(context).pop();
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ));
+                        case SignInFailure():
+                          Handlers.handleErrorState(
+                              context, state.errorMessage);
                       }
-                      return const CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          Palette.firebaseOrange,
-                        ),
-                      );
                     },
-                  ),
+                    child: SignInForm(
+                        emailFocusNode: _emailFocusNode,
+                        passwordFocusNode: _passwordFocusNode),
+                  )
                 ]),
               ),
               Align(
