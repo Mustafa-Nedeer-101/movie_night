@@ -81,7 +81,7 @@ class TextStyles {
       color: Palette.darkBlue,
       fontWeight: CWeights.fontWeightBold);
 
-  static TextStyle font14BlueWeightSemiBold = TextStyle(
+  static TextStyle font14PrimaryWeightSemiBold = TextStyle(
       fontSize: 14,
       color: Palette.primaryColor,
       fontWeight: CWeights.fontWeightSemiBold);

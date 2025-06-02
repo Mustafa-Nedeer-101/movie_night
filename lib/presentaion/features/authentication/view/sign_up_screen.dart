@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_night/presentaion/core/common/widgets/headers/app_bar_title.dart';
+import 'package:movie_night/presentaion/features/authentication/bloc/sign_up/sign_up_cubit.dart';
 import 'package:movie_night/presentaion/features/authentication/view/widgets/sign_up_form.dart';
+import 'package:movie_night/presentaion/features/home/view/home_screen.dart';
 import 'package:movie_night/utils/constants/colors.dart';
+import 'package:movie_night/utils/helpers/handlers.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -11,39 +15,46 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class SignUpScreenState extends State<SignUpScreen> {
-  final FocusNode _nameFocusNode = FocusNode();
-  final FocusNode _emailFocusNode = FocusNode();
-  final FocusNode _passwordFocusNode = FocusNode();
-
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _nameFocusNode.unfocus();
-        _emailFocusNode.unfocus();
-        _passwordFocusNode.unfocus();
-      },
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Palette.firebaseNavy,
+      appBar: AppBar(
+        elevation: 0,
         backgroundColor: Palette.firebaseNavy,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Palette.firebaseNavy,
-          title: const AppBarTitle(
-            sectionName: 'Authentication',
-          ),
+        title: const AppBarTitle(
+          sectionName: 'Authentication',
         ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 16.0,
-              right: 16.0,
-              bottom: 20.0,
-            ),
-            child: SignUpForm(
-              nameFocusNode: _nameFocusNode,
-              emailFocusNode: _emailFocusNode,
-              passwordFocusNode: _passwordFocusNode,
-            ),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 16.0,
+            right: 16.0,
+            bottom: 20.0,
+          ),
+          child: BlocListener<SignUpCubit, SignUpState>(
+            listener: (context, state) {
+              switch (state) {
+                case SignUpInitial():
+                  null;
+                case SignUpLoading():
+                  showDialog(
+                    context: context,
+                    builder: (context) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                case SignUpSuccess():
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ));
+                case SignUpFailure():
+                  Handlers.handleErrorState(context, state.errorMessage);
+              }
+            },
+            child: SignUpForm(),
           ),
         ),
       ),

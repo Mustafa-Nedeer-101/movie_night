@@ -1,13 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:movie_night/data/repositories/auth_repo.dart';
 import 'package:movie_night/firebase_options.dart';
 import 'package:movie_night/presentaion/app_view_model.dart';
 import 'package:movie_night/presentaion/core/theme/app_theme.dart';
-import 'package:movie_night/presentaion/features/authentication/bloc/sign_in/sign_in_cubit.dart';
-import 'package:movie_night/presentaion/features/authentication/view/sign_in_screen.dart';
+import 'package:movie_night/routing/app_router.dart';
+import 'package:movie_night/routing/routes.dart';
 import 'package:movie_night/utils/service_locator/get_it.dart';
 
 void main() async {
@@ -45,10 +43,8 @@ class MyApp extends StatelessWidget {
                 ? CustomAppTheme.darkTheme
                 : CustomAppTheme.lightTheme,
             title: 'Flutter Demo',
-            home: BlocProvider(
-              create: (context) => SignInCubit(getIt<AuthRepo>()),
-              child: SignInScreen(),
-            ),
+            initialRoute: Routes.signInScreen,
+            onGenerateRoute: AppRouter.generateRoute,
           );
         });
   }

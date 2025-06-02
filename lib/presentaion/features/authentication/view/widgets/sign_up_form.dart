@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_night/presentaion/core/common/widgets/forms/custom_form_field.dart';
-import 'package:movie_night/presentaion/features/authentication/view/sign_in_screen.dart';
+import 'package:movie_night/presentaion/features/authentication/bloc/sign_up/sign_up_cubit.dart';
 import 'package:movie_night/utils/constants/colors.dart';
+import 'package:movie_night/utils/helpers/extensions.dart';
 import 'package:movie_night/utils/helpers/validator.dart';
 
 class SignUpForm extends StatefulWidget {
-  final FocusNode nameFocusNode;
-  final FocusNode emailFocusNode;
-  final FocusNode passwordFocusNode;
-
   const SignUpForm({
     super.key,
-    required this.nameFocusNode,
-    required this.emailFocusNode,
-    required this.passwordFocusNode,
   });
   @override
   SignUpFormState createState() => SignUpFormState();
@@ -25,28 +20,6 @@ class SignUpFormState extends State<SignUpForm> {
   final TextEditingController _passwordController = TextEditingController();
 
   final _registerFormKey = GlobalKey<FormState>();
-
-  bool _isSigningUp = false;
-
-  Route _routeToSignInScreen() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          const SignInScreen(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = const Offset(-1.0, 0.0);
-        var end = Offset.zero;
-        var curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +37,6 @@ class SignUpFormState extends State<SignUpForm> {
               children: [
                 CustomFormField(
                   controller: _nameController,
-                  focusNode: widget.nameFocusNode,
                   keyboardType: TextInputType.name,
                   inputAction: TextInputAction.next,
                   isCapitalized: true,
@@ -77,7 +49,6 @@ class SignUpFormState extends State<SignUpForm> {
                 const SizedBox(height: 16.0),
                 CustomFormField(
                   controller: _emailController,
-                  focusNode: widget.emailFocusNode,
                   keyboardType: TextInputType.emailAddress,
                   inputAction: TextInputAction.next,
                   validator: (value) => Validator.validateEmail(
@@ -89,7 +60,6 @@ class SignUpFormState extends State<SignUpForm> {
                 const SizedBox(height: 16.0),
                 CustomFormField(
                   controller: _passwordController,
-                  focusNode: widget.passwordFocusNode,
                   keyboardType: TextInputType.text,
                   inputAction: TextInputAction.done,
                   validator: (value) => Validator.validatePassword(
@@ -103,65 +73,44 @@ class SignUpFormState extends State<SignUpForm> {
             ),
           ),
           const SizedBox(height: 24.0),
-          _isSigningUp
-              ? const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      Palette.firebaseOrange,
-                    ),
+          Padding(
+            padding: const EdgeInsets.only(left: 0.0, right: 0.0),
+            child: SizedBox(
+              width: double.maxFinite,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(
+                    Palette.firebaseOrange,
                   ),
-                )
-              : Padding(
-                  padding: const EdgeInsets.only(left: 0.0, right: 0.0),
-                  child: SizedBox(
-                    width: double.maxFinite,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all(
-                          Palette.firebaseOrange,
-                        ),
-                        shape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      onPressed: () async {
-                        widget.emailFocusNode.unfocus();
-                        widget.passwordFocusNode.unfocus();
-
-                        setState(() {
-                          _isSigningUp = true;
-                        });
-
-                        if (_registerFormKey.currentState!.validate()) {}
-
-                        setState(() {
-                          _isSigningUp = false;
-                        });
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
-                        child: Text(
-                          'REGISTER',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Palette.firebaseGrey,
-                            letterSpacing: 2,
-                          ),
-                        ),
-                      ),
+                  shape: WidgetStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),
+                onPressed: () async {
+                  await context.read<SignUpCubit>().register(
+                      _emailController.text, _passwordController.text);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
+                  child: Text(
+                    'REGISTER',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Palette.firebaseGrey,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
           const SizedBox(height: 16.0),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                _routeToSignInScreen(),
-              );
+              context.pop();
             },
             child: const Text(
               'Already have an account? Sign in',

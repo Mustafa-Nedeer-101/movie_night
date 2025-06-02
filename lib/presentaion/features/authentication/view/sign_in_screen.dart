@@ -15,101 +15,88 @@ class SignInScreen extends StatefulWidget {
 }
 
 class SignInScreenState extends State<SignInScreen> {
-  final FocusNode _emailFocusNode = FocusNode();
-  final FocusNode _passwordFocusNode = FocusNode();
-
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _emailFocusNode.unfocus();
-        _passwordFocusNode.unfocus();
-      },
-      child: Scaffold(
-        backgroundColor: Palette.firebaseNavy,
-        body: SafeArea(
-          child: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 16.0,
-                  left: 16.0,
-                  right: 16.0,
-                  bottom: 20.0,
-                ),
-                child: ListView(children: [
-                  Row(),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        Images.firebaseLogo,
-                        height: 120,
-                      ),
-                      const SizedBox(height: 20),
-                      const Text(
-                        'FlutterFire',
-                        style: TextStyle(
-                          color: Palette.firebaseYellow,
-                          fontSize: 35,
-                        ),
-                      ),
-                      const Text(
-                        'Authentication',
-                        style: TextStyle(
-                          color: Palette.firebaseOrange,
-                          fontSize: 35,
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  // Form
-                  BlocListener<SignInCubit, SignInState>(
-                    listener: (context, state) {
-                      switch (state) {
-                        case SignInInitial():
-                          null;
-                        case SignInLoading():
-                          showDialog(
-                            context: context,
-                            builder: (context) => const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                          );
-                        case SignInSuccess():
-                          Navigator.of(context).pop();
-                          Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
-                          ));
-                        case SignInFailure():
-                          Handlers.handleErrorState(
-                              context, state.errorMessage);
-                      }
-                    },
-                    child: SignInForm(
-                        emailFocusNode: _emailFocusNode,
-                        passwordFocusNode: _passwordFocusNode),
-                  )
-                ]),
+    return Scaffold(
+      backgroundColor: Palette.firebaseNavy,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 16.0,
+                left: 16.0,
+                right: 16.0,
+                bottom: 20.0,
               ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 8.0, left: 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.black26,
-                      borderRadius: BorderRadius.circular(30.0),
+              child: ListView(children: [
+                Row(),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      Images.firebaseLogo,
+                      height: 120,
                     ),
-                    child: const BackButton(),
-                  ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'FlutterFire',
+                      style: TextStyle(
+                        color: Palette.firebaseYellow,
+                        fontSize: 35,
+                      ),
+                    ),
+                    const Text(
+                      'Authentication',
+                      style: TextStyle(
+                        color: Palette.firebaseOrange,
+                        fontSize: 35,
+                      ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ),
+
+                // Form
+                BlocListener<SignInCubit, SignInState>(
+                  listener: (context, state) {
+                    switch (state) {
+                      case SignInInitial():
+                        null;
+                      case SignInLoading():
+                        showDialog(
+                          context: context,
+                          builder: (context) => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        );
+                      case SignInSuccess():
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ));
+                      case SignInFailure():
+                        Handlers.handleErrorState(context, state.errorMessage);
+                    }
+                  },
+                  child: SignInForm(),
+                )
+              ]),
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black26,
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  child: const BackButton(),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

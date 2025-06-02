@@ -19,7 +19,6 @@ class Handlers {
         iconColor: Palette.error,
         content: Text(
           error,
-          style: TextStyles.font15DarkBlueWeightMedium,
         ),
         actions: [
           TextButton(
@@ -28,7 +27,7 @@ class Handlers {
             },
             child: Text(
               'Got it',
-              style: TextStyles.font14BlueWeightSemiBold,
+              style: TextStyles.font14PrimaryWeightSemiBold,
             ),
           ),
         ],

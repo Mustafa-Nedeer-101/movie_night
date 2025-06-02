@@ -2,20 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_night/presentaion/core/common/widgets/forms/custom_form_field.dart';
 import 'package:movie_night/presentaion/features/authentication/bloc/sign_in/sign_in_cubit.dart';
-import 'package:movie_night/presentaion/features/authentication/view/sign_up_screen.dart';
 import 'package:movie_night/presentaion/features/authentication/view/widgets/facebook_sign_in_button.dart';
 import 'package:movie_night/presentaion/features/authentication/view/widgets/google_sign_in_button.dart';
+import 'package:movie_night/routing/routes.dart';
 import 'package:movie_night/utils/constants/colors.dart';
+import 'package:movie_night/utils/helpers/extensions.dart';
 import 'package:movie_night/utils/helpers/validator.dart';
 
 class SignInForm extends StatefulWidget {
-  final FocusNode emailFocusNode;
-  final FocusNode passwordFocusNode;
-
   const SignInForm({
     super.key,
-    required this.emailFocusNode,
-    required this.passwordFocusNode,
   });
   @override
   SignInFormState createState() => SignInFormState();
@@ -50,7 +46,6 @@ class SignInFormState extends State<SignInForm> {
               children: [
                 CustomFormField(
                   controller: _emailController,
-                  focusNode: widget.emailFocusNode,
                   keyboardType: TextInputType.emailAddress,
                   inputAction: TextInputAction.next,
                   validator: (value) => Validator.validateEmail(
@@ -62,7 +57,6 @@ class SignInFormState extends State<SignInForm> {
                 const SizedBox(height: 16.0),
                 CustomFormField(
                   controller: _passwordController,
-                  focusNode: widget.passwordFocusNode,
                   keyboardType: TextInputType.text,
                   inputAction: TextInputAction.done,
                   validator: (value) => Validator.validatePassword(
@@ -91,11 +85,8 @@ class SignInFormState extends State<SignInForm> {
                   ),
                 ),
                 onPressed: () async {
-                  widget.emailFocusNode.unfocus();
-                  widget.passwordFocusNode.unfocus();
-
                   if (_signInFormKey.currentState!.validate()) {
-                    context.read<SignInCubit>().signin(
+                    await context.read<SignInCubit>().signin(
                         _emailController.text, _passwordController.text);
                   }
                 },
@@ -125,9 +116,7 @@ class SignInFormState extends State<SignInForm> {
           ),
           InkWell(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return const SignUpScreen();
-              }));
+              context.pushNamed(Routes.signUpScreen);
             },
             child: const Text(
               'Don\'t have an account? Sign up',

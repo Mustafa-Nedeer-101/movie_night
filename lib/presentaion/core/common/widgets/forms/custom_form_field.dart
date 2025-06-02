@@ -5,7 +5,6 @@ class CustomFormField extends StatelessWidget {
   const CustomFormField({
     super.key,
     required TextEditingController controller,
-    required FocusNode focusNode,
     required TextInputType keyboardType,
     required TextInputAction inputAction,
     required String label,
@@ -16,7 +15,6 @@ class CustomFormField extends StatelessWidget {
     this.maxLines = 1,
     this.isLabelEnabled = true,
   })  : _emailController = controller,
-        _emailFocusNode = focusNode,
         _keyboardtype = keyboardType,
         _inputAction = inputAction,
         _label = label,
@@ -24,7 +22,7 @@ class CustomFormField extends StatelessWidget {
         _validator = validator;
 
   final TextEditingController _emailController;
-  final FocusNode _emailFocusNode;
+
   final TextInputType _keyboardtype;
   final TextInputAction _inputAction;
   final String _label;
@@ -40,7 +38,6 @@ class CustomFormField extends StatelessWidget {
     return TextFormField(
       maxLines: maxLines,
       controller: _emailController,
-      focusNode: _emailFocusNode,
       keyboardType: _keyboardtype,
       obscureText: isObscure,
       textCapitalization:
